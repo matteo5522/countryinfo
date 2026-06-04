@@ -17,9 +17,6 @@ export default function AppTabs() {
           <TabTrigger name="search" href="/search" asChild>
             <TabButton>Search</TabButton>
           </TabTrigger>
-          <TabTrigger name="alphabet" href="/alphabet" asChild>
-            <TabButton>A-Z</TabButton>
-          </TabTrigger>
         </CustomTabList>
       </TabList>
     </Tabs>
@@ -33,7 +30,10 @@ export function TabButton({ children, isFocused, ...props }) {
         type={isFocused ? "backgroundSelected" : "backgroundElement"}
         style={styles.tabButtonView}
       >
-        <ThemedText type="small" themeColor={isFocused ? "text" : "textSecondary"}>
+        <ThemedText
+          type="small"
+          themeColor={isFocused ? "text" : "textSecondary"}
+        >
           {children}
         </ThemedText>
       </ThemedView>
