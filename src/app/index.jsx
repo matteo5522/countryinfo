@@ -1,7 +1,7 @@
+import { Image } from "expo-image";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { AnimatedIcon } from "@/components/animated-icon";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { BottomTabInset, MaxContentWidth, Spacing } from "@/constants/theme";
@@ -11,7 +11,11 @@ export default function HomeScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
+          <Image
+            source={require("@/assets/images/globe.png")}
+            style={styles.heroImage}
+            contentFit="contain"
+          />
           <ThemedText type="title" style={styles.title}>
             Welcome to Country Info
           </ThemedText>
@@ -44,6 +48,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: Spacing.four,
+  },
+  heroImage: {
+    width: "100%",
+    maxWidth: 760,
+    aspectRatio: 1540 / 904,
   },
   title: {
     textAlign: "center",

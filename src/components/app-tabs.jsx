@@ -1,25 +1,73 @@
-import { NativeTabs } from "expo-router/unstable-native-tabs";
-import { useColorScheme } from "react-native";
+import { Link, usePathname } from "expo-router";
+import { Pressable, StyleSheet, View } from "react-native";
 
-import { Colors } from "@/constants/theme";
+import { MaxContentWidth, Spacing } from "@/constants/theme";
+import { ThemedText } from "./themed-text";
+import { ThemedView } from "./themed-view";
+
+const tabs = [
+  { href: "/", label: "Home" },
+  { href: "/search", label: "Search" },
+];
 
 export default function AppTabs() {
-  const scheme = useColorScheme();
-  const colors = Colors[scheme === "unspecified" ? "light" : scheme];
+  const pathname = usePathname();
 
   return (
-    <NativeTabs
-      backgroundColor={colors.background}
-      indicatorColor={colors.backgroundElement}
-      labelStyle={{ selected: { color: colors.text } }}
-    >
-      <NativeTabs.Trigger name="index">
-        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
-      </NativeTabs.Trigger>
+    <View style={styles.tabListContainer}>
+      <ThemedView type="backgroundElement" style={styles.innerContainer}>
+        <ThemedText type="smallBold" style={styles.brandText}>
+          Country Info
+        </ThemedText>
 
-      <NativeTabs.Trigger name="search">
-        <NativeTabs.Trigger.Label>Search</NativeTabs.Trigger.Label>
-      </NativeTabs.Trigger>
-    </NativeTabs>
+        {tabs.map((tab) => (
+          <Link key={tab.href} href={tab.href} asChild>
+            <Pressable>
+              <ThemedView
+                type={pathname === tab.href ? "backgroundSelected" : "backgroundElement"}
+                style={styles.tabButtonView}
+              >
+                <ThemedText
+                  type="small"
+                  themeColor={pathname === tab.href ? "text" : "textSecondary"}
+                >
+                  {tab.label}
+                </ThemedText>
+              </ThemedView>
+            </Pressable>
+          </Link>
+        ))}
+      </ThemedView>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  tabListContainer: {
+    position: "absolute",
+    top: 0,
+    width: "100%",
+    padding: Spacing.three,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  innerContainer: {
+    paddingVertical: Spacing.two,
+    paddingHorizontal: Spacing.five,
+    borderRadius: Spacing.five,
+    flexDirection: "row",
+    alignItems: "center",
+    flexGrow: 1,
+    gap: Spacing.two,
+    maxWidth: MaxContentWidth,
+  },
+  brandText: {
+    marginRight: "auto",
+  },
+  tabButtonView: {
+    paddingVertical: Spacing.one,
+    paddingHorizontal: Spacing.three,
+    borderRadius: Spacing.three,
+  },
+});

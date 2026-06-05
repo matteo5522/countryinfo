@@ -14,7 +14,7 @@ export async function fetchCountryPreviews() {
 
 export async function fetchCountryDetail(code) {
   const response = await fetch(
-    `${BASE_URL}/alpha/${encodeURIComponent(code)}?fields=name,flags,cca3,capital,population,languages,currencies,region,subregion,area,timezones,borders,maps`,
+    `${BASE_URL}/alpha/${encodeURIComponent(code)}?fields=name,flag,flags,coatOfArms,cca3,capital,population,languages,currencies,region,subregion,continents,area,timezones,borders,maps,tld,idd,car,independent,unMember`,
   );
 
   if (!response.ok) {

@@ -22,7 +22,7 @@ export default function SearchScreen() {
     }
 
     return countries.filter((country) =>
-      country.name.common.toLowerCase().includes(normalizedSearch)
+      country.name.common.toLowerCase().includes(normalizedSearch),
     );
   }, [countries, searchTerm]);
 
@@ -49,7 +49,9 @@ export default function SearchScreen() {
         </ThemedView>
 
         {isLoading && (
-          <ThemedText style={styles.statusText}>Loading countries...</ThemedText>
+          <ThemedText style={styles.statusText}>
+            Loading countries...
+          </ThemedText>
         )}
 
         {error && <ThemedText style={styles.statusText}>{error}</ThemedText>}
@@ -60,7 +62,9 @@ export default function SearchScreen() {
             keyExtractor={(country) => country.cca3}
             renderItem={({ item }) => <CountryListItem country={item} />}
             contentContainerStyle={styles.listContent}
-            ItemSeparatorComponent={() => <ThemedView style={styles.separator} />}
+            ItemSeparatorComponent={() => (
+              <ThemedView style={styles.separator} />
+            )}
           />
         )}
       </SafeAreaView>
