@@ -23,6 +23,10 @@ export default function HomeScreen() {
             Search countries and discover useful facts in one place.
           </ThemedText>
         </ThemedView>
+        <ThemedView style={styles.footer}>
+          <ThemedText style={styles.info}>Matteo Trinko</ThemedText>
+          <ThemedText style={styles.info}>BITI-4V</ThemedText>
+        </ThemedView>
       </SafeAreaView>
     </ThemedView>
   );
@@ -59,6 +63,16 @@ const styles = StyleSheet.create({
   },
   description: {
     maxWidth: 420,
+    textAlign: "center",
+    fontSize: 16,
+    lineHeight: 24,
+    opacity: 0.72,
+  },
+  footer: {
+    alignItems: "center",
+    paddingBottom: Spacing.three,
+  },
+  info: {
     textAlign: "center",
     fontSize: 16,
     lineHeight: 24,
