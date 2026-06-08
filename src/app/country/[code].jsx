@@ -93,46 +93,25 @@ export default function CountryDetailScreen() {
             </ThemedView>
 
             <CountryDetailSection title="General">
-              <InfoRow label="Capital" value={formatList(country.capital)} />
-              <InfoRow
-                label="Population"
-                value={formatNumber(country.population)}
-              />
-              <InfoRow label="Region" value={country.region} />
-              <InfoRow label="Subregion" value={country.subregion} />
-              <InfoRow
-                label="Continent"
-                value={formatList(country.continents)}
-              />
-              <InfoRow label="Area" value={formatArea(country.area)} />
-              <InfoRow
-                label="Independent"
-                value={formatBoolean(country.independent)}
-              />
-              <InfoRow
-                label="UN Member"
-                value={formatBoolean(country.unMember)}
-              />
+              <InfoRow label="Capital" value={formatList(country.capital)}/>
+              <InfoRow label="Population" value={formatNumber(country.population)}/>
+              <InfoRow label="Region" value={country.region}/>
+              <InfoRow label="Subregion" value={country.subregion}/>
+              <InfoRow label="Continent" value={formatList(country.continents)}/>
+              <InfoRow label="Area" value={formatArea(country.area)}/>
+              <InfoRow label="Independent" value={formatBoolean(country.independent)}/>
+              <InfoRow label="UN Member" value={formatBoolean(country.unMember)}/>
             </CountryDetailSection>
 
             <CountryDetailSection title="Language & Currency">
-              <InfoRow
-                label="Languages"
-                value={formatList(country.languages)}
-              />
-              <InfoRow
-                label="Currency"
-                value={formatCurrencies(country.currencies)}
-              />
+              <InfoRow label="Languages" value={formatList(country.languages)}/>
+              <InfoRow label="Currency" value={formatCurrencies(country.currencies)}/>
             </CountryDetailSection>
 
             <CountryDetailSection title="Geography & Travel">
-              <InfoRow
-                label="Border Countries"
-                value={formatList(country.borders)}
-              />
-              <InfoRow label="Timezone" value={formatList(country.timezones)} />
-              <InfoRow label="Driving Side" value={country.car?.side} />
+              <InfoRow label="Border Countries" value={formatList(country.borders)}/>
+              <InfoRow label="Timezone" value={formatList(country.timezones)}/>
+              <InfoRow label="Driving Side" value={country.car?.side}/>
               {googleMapsUrl && (
                 <InfoRow label="Google Maps">
                   <Pressable onPress={() => Linking.openURL(googleMapsUrl)}>
@@ -144,14 +123,8 @@ export default function CountryDetailScreen() {
 
             <CountryDetailSection title="Communication & Codes">
               <InfoRow label="Country Code" value={country.cca3} />
-              <InfoRow
-                label="Top Level Domain"
-                value={formatList(country.tld)}
-              />
-              <InfoRow
-                label="Calling Code"
-                value={formatCallingCode(country.idd)}
-              />
+              <InfoRow label="Top Level Domain" value={formatList(country.tld)}/>
+              <InfoRow label="Calling Code" value={formatCallingCode(country.idd)}/>
             </CountryDetailSection>
           </ScrollView>
         )}
